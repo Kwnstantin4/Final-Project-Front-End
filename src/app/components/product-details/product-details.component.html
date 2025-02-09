@@ -1,0 +1,13 @@
+<div class="container mt-5" *ngIf="product">
+  <div class="card"> 
+      
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text text-primary">{{ product.cost | currency }}</p>
+        <button class="btn btn-primary w-100" (click)="addToCart()">Προσθήκη στο Καλάθι</button>
+      </div>
+    </div>
+    </div>
+  
+  

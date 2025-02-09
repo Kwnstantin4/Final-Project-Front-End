@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <h2>Checkout</h2>
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <!-- Όνομα -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Όνομα</label>
+      <input id="name" class="form-control" formControlName="name" required />
+    </div>
+
+    <!-- Επώνυμο -->
+    <div class="mb-3">
+      <label for="surname" class="form-label">Επώνυμο</label>
+      <input id="surname" class="form-control" formControlName="surname" required />
+    </div>
+
+    <!-- Διεύθυνση -->
+    <div class="mb-3">
+      <label for="address" class="form-label">Διεύθυνση</label>
+      <input id="address" class="form-control" formControlName="address" required />
+    </div>
+
+    <!-- Τηλέφωνο -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">Τηλέφωνο</label>
+      <input id="phone" class="form-control" formControlName="phone" required />
+    </div>
+
+    
+  </form>
+    
+  
+   <!-- Κουμπί Order Shipment -->
+   <div class="text-center mt-3">
+    <button class="btn btn-warning w-100" type="submit" (click)="onSubmit()" [disabled]="!checkoutForm.valid">
+      Order Submission
+    </button>
+  </div>
+</div>
+
+  

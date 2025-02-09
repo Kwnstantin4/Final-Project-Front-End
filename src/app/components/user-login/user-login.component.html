@@ -1,0 +1,46 @@
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-5 border-0 w-50">
+    <div class="card-body">
+      <h4 class="text-center fw-bold">User Login</h4>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        class="d-flex flex-column gap-3">
+        
+        <div class="form-group">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Enter your email" />
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password:</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Enter your password" />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="!form.valid">
+          Login
+        </button>
+
+        <div *ngIf="invalidLogin" class="alert alert-danger text-center">
+          <strong>Error:</strong> Invalid email or password.
+          <br>
+          <button class="btn btn-link p-0 border-0" (click)="navigateToSignup()">Click here</button> to register.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

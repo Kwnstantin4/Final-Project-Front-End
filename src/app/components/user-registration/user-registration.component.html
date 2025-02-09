@@ -1,0 +1,87 @@
+<div *ngIf="registrationStatus.success; else formTemplate" class="alert alert-success text-center mt-3">
+  <h4>Η εγγραφή ολοκληρώθηκε επιτυχώς!</h4>
+  <p>Μπορείτε τώρα να συνδεθείτε.</p>
+  <button class="btn btn-primary w-50" (click)="navigateToLogin()">Μετάβαση στο Login</button>
+</div>
+
+
+<ng-template #formTemplate>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="container mt-4 ">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input id="username" formControlName="username" type="text" class="form-control" required (blur)="checkDuplicateUsername()"/>
+        <div *ngIf="form.get('username')?.hasError('duplicateUsername')" class="text-danger">
+          Το όνομα χρήστη υπάρχει ήδη. Επιλέξτε άλλο.
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input id="name" formControlName="name" type="text" class="form-control" required />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="surname" class="form-label">Surname</label>
+        <input id="surname" formControlName="surname" type="text" class="form-control" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" formControlName="email" type="email" class="form-control" required />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input id="password" formControlName="password" type="password" class="form-control" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="confirmPassword" class="form-label">Password Confirmation</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" required />
+        <!--  Μήνυμα λάθους αν τα passwords δεν ταιριάζουν -->
+        <div *ngIf="form.hasError('passwordMismatch') && form.get('confirmPassword')?.touched" class="text-danger">
+          Οι κωδικοί δεν ταιριάζουν!
+        </div>
+      </div>
+    </div>
+
+    <fieldset formGroupName="address" class="border p-3 mb-3">
+      <legend class="h5">Address</legend>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="area" class="form-label">Area</label>
+          <input id="area" formControlName="area" type="text" class="form-control" required />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="road" class="form-label">Road</label>
+          <input id="road" formControlName="road" type="text" class="form-control" required />
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset formGroupName="phone" class="border p-3 mb-3">
+      <legend class="h5">Phone</legend>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="type" class="form-label">Type</label>
+          <input id="type" formControlName="type" type="text" class="form-control" required />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="number" class="form-label">Number</label>
+          <input id="number" formControlName="number" type="text" class="form-control" required />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Αποτροπή του Submit αν η φόρμα δεν είναι έγκυρη -->
+    <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">
+      Submit
+    </button>
+  </form>
+</ng-template>
+
