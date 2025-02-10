@@ -18,7 +18,9 @@ export const routes: Route[] = [
   { path: 'user-login', component: UserLoginComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: '', component: WelcomeComponent }
+  { path: '', component: WelcomeComponent },
+  { path: 'login', redirectTo: 'user-login', pathMatch: 'full' }
+
   
 ];
 

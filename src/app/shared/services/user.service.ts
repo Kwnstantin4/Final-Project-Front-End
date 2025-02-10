@@ -22,16 +22,16 @@ export class UserService {
   user = this.userSubject.asObservable();
 
 
-  //http: HttpClient = inject(HttpClient);
-  //router: Router = inject(Router);
+  http: HttpClient = inject(HttpClient);
+  router: Router = inject(Router);
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor() {
     const access_token = localStorage.getItem('access_token');
 
     if (access_token) {
       try {
         const decodedToken = jwtDecode(access_token) as any;
-        console.log("✔ Decoded Token:", decodedToken);
+        console.log(" Decoded Token:", decodedToken);
 
         if (!decodedToken.fullname) {
           console.warn(" Το fullname λείπει από το token! Χρήση name + surname αντί.");

@@ -153,12 +153,11 @@ export class UserRegistrationComponent {
 navigateToLogin() {
   this.router.navigate(['/user-login']).then(success => {
     if (!success) {
-      console.error('❌ Η πλοήγηση στο Login απέτυχε.');
+      console.error('Η πλοήγηση στο Login απέτυχε.');
     } else {
-      console.log('✅ Επιτυχής πλοήγηση στη σελίδα Login.');
+      console.log('Επιτυχής πλοήγηση στη σελίδα Login.');
     }
   });
 }
 
 }
-
